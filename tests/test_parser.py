@@ -17,6 +17,14 @@ def test_parses_a_plain_grid():
     assert maze.end == (1, 3)
 
 
+def test_parses_a_one_line_maze():
+    maze = parse_maze("5:#####S..E######")
+
+    assert maze.rows == ["#####", "S..E#", "#####"]
+    assert maze.start == (1, 0)
+    assert maze.end == (1, 3)
+
+
 def test_rejects_rows_of_different_lengths():
     with pytest.raises(MazeFormatError, match="row 2 has 4 cells, expected 5"):
         parse_maze(
